@@ -4,9 +4,5 @@
 
 Matrix2D::Matrix2D()
 {
-}
 
-
-Matrix2D::~Matrix2D()
-{
 }
