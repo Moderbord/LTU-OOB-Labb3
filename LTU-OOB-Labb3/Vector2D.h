@@ -24,10 +24,10 @@ public:
 	void setX(float x);
 	void setY(float y);
 
-	// Calculations
-	Vector2D computeVectorNormal();
-	float computeVectorLength();
-	float computeDotProduct(const Vector2D &vector);
+	// Computations
+	Vector2D normalized();
+	float vectorLength();
+	float dotProduct(const Vector2D &vector);
 
 	// Additional functionality
 	const void printX();

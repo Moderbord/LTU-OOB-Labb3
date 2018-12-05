@@ -86,10 +86,10 @@ void Vector2D::setY(float y)
 	arr[1] = y;
 }
 
-Vector2D Vector2D::computeVectorNormal()
+Vector2D Vector2D::normalized()
 {
 	Vector2D vector;
-	float normal = this->computeVectorLength();
+	float normal = this->vectorLength();
 
 	vector.arr[0] = this->arr[0] / normal;
 	vector.arr[1] = this->arr[1] / normal;
@@ -97,12 +97,12 @@ Vector2D Vector2D::computeVectorNormal()
 	return vector;
 }
 
-float Vector2D::computeVectorLength()
+float Vector2D::vectorLength()
 {
 	return sqrt(pow(this->arr[0], 2) + pow(this->arr[1], 2));		// sqrt(a^2 + b^2)
 }
 
-float Vector2D::computeDotProduct(const Vector2D & vector)
+float Vector2D::dotProduct(const Vector2D & vector)
 {
 	return this->arr[0] * vector.arr[0] + this->arr[1] * vector.arr[1];		// a * x + b * y
 }
