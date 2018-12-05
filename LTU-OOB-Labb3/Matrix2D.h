@@ -1,4 +1,13 @@
 #pragma once
+#define _USE_MATH_DEFINES
+#include <math.h>
+#include <iostream>
+
+namespace {
+	using std::cout;
+	using std::endl;
+}
+
 class Matrix2D
 {
 private:
@@ -11,7 +20,7 @@ public:
 	Matrix2D(const Matrix2D &matrix);
 
 	// Operators
-	Matrix2D operator*(const Matrix2D &matrix);
+	const Matrix2D operator*(const Matrix2D &matrix);
 	void operator=(const Matrix2D &matrix);
 
 	// Setters and getters
@@ -19,20 +28,20 @@ public:
 	const float getB();
 	const float getC();
 	const float getD();
-	const float getAll();
-	float setA(float a);
-	float setB(float b);
-	float setC(float c);
-	float setD(float d);
-	float setAll(float x);
+	float *getPointer();
+	void setA(float a);
+	void setB(float b);
+	void setC(float c);
+	void setD(float d);
+	void setAll(float x);
 
 	// Computations
-	Matrix2D transpose();
-	Matrix2D rotationMatrix();
+	const Matrix2D transpose();
 
 	// Additional functionality
+	const static Matrix2D rotationMatrix(float a, float b, float c, float d);
 	const static Matrix2D identityMatrix();
-	const void printMatrix();
+	const void print();
 	const void printA();
 	const void printB();
 	const void printC();
