@@ -44,6 +44,14 @@ void Matrix2D::operator=(const Matrix2D &matrix)
 	this->arr[3] = matrix.arr[3];
 }
 
+const Vector2D Matrix2D::operator*(Vector2D &vector)
+{
+	Vector2D vec;
+	vec.setX(this->arr[0] * vector.arr[0] + this->arr[1] * vector.arr[0]);
+	vec.setY(this->arr[2] * vector.arr[1] + this->arr[3] * vector.arr[1]);
+	return vec;
+}
+
 const float Matrix2D::getA()
 {
 	return this->arr[0];

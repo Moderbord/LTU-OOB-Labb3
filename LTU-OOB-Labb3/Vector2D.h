@@ -1,6 +1,7 @@
 #pragma once
 class Vector2D
 {
+	friend class Matrix2D;
 private:
 	float arr[2];
 

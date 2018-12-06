@@ -2,6 +2,7 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include <iostream>
+#include "Vector2D.h"
 
 namespace {
 	using std::cout;
@@ -22,6 +23,7 @@ public:
 	// Operators
 	const Matrix2D operator*(const Matrix2D &matrix);
 	void operator=(const Matrix2D &matrix);
+	const Vector2D operator*(Vector2D &vector);
 
 	// Setters and getters
 	const float getA();
@@ -37,6 +39,7 @@ public:
 
 	// Computations
 	const Matrix2D transpose();
+
 
 	// Additional functionality
 	const static Matrix2D rotationMatrix(float a, float b, float c, float d);
