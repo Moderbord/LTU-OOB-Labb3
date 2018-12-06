@@ -24,6 +24,12 @@
     <ClInclude Include="Microbus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Sedan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Jeep.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

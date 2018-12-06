@@ -8,22 +8,24 @@ namespace {
 class Vehicle
 {
 protected:
-	int capacity;
-	int pricePerHour;
-	int gasPerKilometer;
-	int numAvailable;
 	string modelName;
+	int numAvailable;
+	int capacity;
+	int gasPerKilometer;
+	int pricePerHour;
 
 public:
 	// Constructor
-	Vehicle(int cap, int gasPerKM) : capacity(cap), gasPerKilometer(gasPerKM) {} ;
+	Vehicle(int cap, int gasPerKM, string modName) : capacity(cap), gasPerKilometer(gasPerKM), modelName(modName) {} ;
 
 	// Getters and setters
-	int getCapacity();
-	int getPriceperHour();
-	int getGasPerKilometer();
-	int getNumAvailable();
 	string getModelName();
+	int getNumAvailable();
+	int getCapacity();
+	int getGasPerKilometer();
+	int getPriceperHour();
+	void setNumAvailable(int num);
+	void setPricePerHour(int price);
 
 	// Functionality
 	void decuctAvailable();
