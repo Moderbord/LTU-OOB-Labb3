@@ -16,7 +16,11 @@ protected:
 
 public:
 	// Constructor
-	Vehicle(int cap, int gasPerKM, string modName) : capacity(cap), gasPerKilometer(gasPerKM), modelName(modName) {} ;
+	Vehicle(int cap, int gasPerKM, string modName) : capacity(cap), gasPerKilometer(gasPerKM), modelName(modName)
+	{
+		numAvailable = 0;
+		pricePerHour = 0;
+	} ;
 
 	// Getters and setters
 	string getModelName();
@@ -29,6 +33,7 @@ public:
 
 	// Functionality
 	void decuctAvailable();
+	void print();
 
 };
 
