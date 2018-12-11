@@ -4,6 +4,7 @@
 #include "Jeep.h"
 #include <iostream>
 #include <vector>
+#include <iterator>
 
 namespace {
 	using std::cout;
@@ -15,7 +16,7 @@ namespace {
 
 void registerVehicles(vector<Vehicle> &vector);
 void filterVehicles(vector<Vehicle> &vehicles, vector<Vehicle*> &filter, vector<Vehicle*> &rented);
-void enterVehicles(vector<Vehicle*> &filtered, vector<Vehicle*> &rented);
+void rentVehicles(vector<Vehicle*> &filtered, vector<Vehicle*> &rented);
 
 int main()
 {
@@ -53,6 +54,10 @@ int main()
 			break;
 		case '0':
 			cout << "Rented cars:" << endl;
+			for (Vehicle *v : rentedVehicles)
+			{
+				cout << v->getModelName() << endl;
+			}
 			return false;
 		default:
 			break;
@@ -121,6 +126,7 @@ void filterVehicles(vector<Vehicle> &vehicles, vector<Vehicle*> &filtered, vecto
 	while (looping)
 	{
 		string input;
+		filtered.clear();
 
 		for (Vehicle v : vehicles)
 		{
@@ -142,16 +148,15 @@ void filterVehicles(vector<Vehicle> &vehicles, vector<Vehicle*> &filtered, vecto
 			cout << "Enter a minimun number of seats\n>>";
 			cin >> numPeople;
 
-			for (Vehicle v : vehicles)
+			for (vector<Vehicle>::iterator it = vehicles.begin(); it != vehicles.end(); it++)
 			{
-				if (v.getPriceperHour() <= rentMax && v.getCapacity() >= numPeople) 
+				if (it->getPriceperHour() <= rentMax && it->getCapacity() >= numPeople)
 				{
-					filtered.push_back(&v);
-
+					filtered.push_back(it._Ptr);
 				}
 			}
 
-			enterVehicles(filtered, rented);
+			rentVehicles(filtered, rented);
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
 		case '0':
@@ -163,19 +168,26 @@ void filterVehicles(vector<Vehicle> &vehicles, vector<Vehicle*> &filtered, vecto
 
 }
 
-void enterVehicles(vector<Vehicle*> &filtered, vector<Vehicle*> &rented)
+void rentVehicles(vector<Vehicle*> &filtered, vector<Vehicle*> &rented)
 {
-	int i;
+	int i = 1;
 
 	cout << "Available Vehicles based on user requirements" << endl;
 	for (Vehicle *v : filtered)
 	{
+		cout << i << ": ";
 		v->print();
+		i++;
 	}
 
 	cout << "Enter Vehicle to be rented or go back (0)" << endl;
 
 	cin >> i;
+
+	if (!i)
+		return;
+
+	i--;
 
 	try {
 		filtered.at(i)->decuctAvailable();
@@ -185,6 +197,4 @@ void enterVehicles(vector<Vehicle*> &filtered, vector<Vehicle*> &rented)
 	catch (const std::exception &error) {
 		std::cerr << error.what();
 	}
-
-	filtered.clear();
 }
